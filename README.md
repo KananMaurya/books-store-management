@@ -19,9 +19,5 @@ A web-based stock management system built using **PHP** and **CodeIgniter 3**. T
 - Bootstrap 3
 - jQuery
 
-## 📦 Installation
-
-1. **Clone the repository:**
-
 ```bash
 https://github.com/KananMaurya/stock-management.git
