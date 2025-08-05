@@ -24,4 +24,4 @@ A web-based stock management system built using **PHP** and **CodeIgniter 3**. T
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/stock-management.git
+git clone https://github.com/KananMaurya/stock-management.git
