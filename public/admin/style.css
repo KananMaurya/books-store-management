@@ -1,0 +1,66 @@
+/* General */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Topbar */
+.topbar {
+  background: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9ecef;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.topbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+/* Sidebar */
+.main-wrapper {
+  display: flex;
+}
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #212529;
+  padding-top: 15px;
+}
+.sidebar .nav-link {
+  color: #adb5bd;
+  padding: 12px 20px;
+  transition: 0.3s;
+}
+.sidebar .nav-link i {
+  margin-right: 8px;
+}
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: #0d6efd;
+  color: #fff !important;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  background: #f8f9fa;
+}
+
+/* Cards */
+.card {
+  border-radius: 10px;
+}
+.card .card-title {
+  font-size: 18px;
+  margin: 0;
+}
+.card p {
+  font-size: 14px;
+  margin: 0;
+}

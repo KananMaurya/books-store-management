@@ -1,0 +1,12 @@
+button.btn.btn-danger.w-100.ms-2 {
+    font-size: 11px;
+}
+
+button.btn.btn-danger.w-100.ms-2:hover {
+    background: rgb(185 47 199);
+    border: rgb(185 47 199);
+}
+
+button.btn.btn-outline-secondary:hover {
+    background: radial-gradient(#e01414, transparent);
+}
