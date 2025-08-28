@@ -1,23 +1,32 @@
-# Stock Management
+Book Store Management
 
-A web-based stock management system built using **PHP** and **CodeIgniter 3**. This application helps manage inventory, suppliers, categories, and stock in/out operations effectively.
+A web-based book inventory and stock management system built using PHP and CodeIgniter 4. This application is designed to help manage books, categories, suppliers, and stock transactions effectively, with a modern and responsive interface using Bootstrap 5.
 
-## 🚀 Features
+🚀 Features
 
-- Add, edit, and delete stock items
-- Category and supplier management
-- Stock in/out tracking
-- Basic reporting (stock levels, activity logs)
-- User-friendly dashboard
-- Simple authentication system
+Add, edit, and delete book records
 
-## 🛠 Tech Stack
+Category and supplier management
 
-- PHP
-- CodeIgniter 3
-- MySQL
-- Bootstrap 3
-- jQuery
+Track stock in/out operations
+
+Basic reporting (stock levels, activity logs)
+
+User-friendly and responsive dashboard
+
+Simple authentication and user access control
+
+🛠 Tech Stack
+
+PHP
+
+CodeIgniter 4
+
+MySQL
+
+Bootstrap 5
+
+jQuery
 
 ```bash
 https://github.com/KananMaurya/stock-management.git
