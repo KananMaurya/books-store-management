@@ -29,4 +29,4 @@ Bootstrap 5
 jQuery
 
 ```bash
-https://github.com/KananMaurya/stock-management.git
+ https://github.com/KananMaurya/book-store-management.git
