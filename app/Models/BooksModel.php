@@ -68,6 +68,26 @@ public function get_taxs($id = '')
     return $builder->get()->getResultArray();
 }
 
+public function get_for_website($id = '')
+{
+    $builder = $this->select('tbl_product.*, 
+                              tbl_writers.name as writer_name, 
+                              tbl_writers.id as writer_id, 
+                              tbl_publisher.name as publisher_name, 
+                              tbl_publisher.id as publisher_id,
+                              tbl_tax.id as tax_id,
+                              tbl_tax.name as tax_name,
+                              tbl_tax.rate as tax_rate')
+                    ->join('tbl_writers', 'tbl_writers.id = tbl_product.writer', 'left')
+                    ->join('tbl_publisher', 'tbl_publisher.id = tbl_product.publisher', 'left')
+                    ->join('tbl_tax', 'tbl_tax.id = tbl_product.tax_id', 'left')
+                    ->where('tbl_product.is_active', '1'); 
+    if ($id) {
+        return $builder->where('tbl_product.product_id', $id)->first(); // single row
+    }
+
+    return $builder->findAll();
+}
 
 
 }
