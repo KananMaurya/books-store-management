@@ -36,7 +36,7 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <nav class="nav flex-column">
-        <a class="nav-link active" href="<?= base_url('admin/dashboard') ?>"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+        <a class="nav-link" href="<?= base_url('admin/dashboard') ?>"><i class="fa-solid fa-gauge"></i> Dashboard</a>
         <a class="nav-link" href="<?= base_url('admin/book/listing') ?>"><i class="fa-solid fa-book"></i> Add Books</a>
         <a class="nav-link" href="<?= base_url('admin/categories') ?>"><i class="fa-solid fa-folder"></i> Categories</a>
         <a class="nav-link" href="<?= base_url('admin/publishers') ?>"><i class="fa-solid fa-building"></i> Publishers</a>
@@ -70,3 +70,29 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let currentUrl = window.location.href;
+
+    // Highlight active link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (currentUrl.includes(link.getAttribute('href'))) {
+            link.classList.add('active');
+
+            // If it's inside a collapsed menu, open it
+            let parentCollapse = link.closest('.collapse');
+            if (parentCollapse) {
+                parentCollapse.classList.add('show');
+
+                // If you have parent toggle button
+                let parentToggle = document.querySelector(
+                    '[data-bs-target="#' + parentCollapse.id + '"]'
+                );
+                if (parentToggle) {
+                    parentToggle.classList.remove('collapsed');
+                }
+            }
+        }
+    });
+});
+</script>

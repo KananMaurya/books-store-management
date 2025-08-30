@@ -271,7 +271,7 @@
       </div>
     </div>
 
-    <?php foreach($books as $book) { ?>
+    <?php if(!empty($books)){ foreach($books as $book) { ?>
       
     <div class="col">
   <div class="card book-card position-relative">
@@ -303,7 +303,7 @@
   </div>
 </div>
 
-<?php } ?>
+<?php } } ?>
 </div>
 
   <!-- Quick View Modal -->

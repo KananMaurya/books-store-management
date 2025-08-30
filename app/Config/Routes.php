@@ -33,4 +33,7 @@ $routes->group('admin',['namespace' => 'App\Controllers\Admin'], function($route
     $routes->get('book/delete/(:segment)','Book::delete/$1');
 
     $routes->get('categories','Categories::index');
+
+
+    $routes->get('publishers','Publishers::index');
 });
