@@ -6,13 +6,13 @@
     <?php endif; ?>
     <div class="row">
         <div class="col-12">
-            <a href="<?= admin_url('publisher/add_publisher'); ?>">
+            <a href="<?= admin_url('publishers/save_publisher'); ?>">
                 <button class="btn btn-primary">Add New Publisher</button>
             </a>
         </div>
     </div>
     <hr>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="myTable">
        <thead>
             <tr>
                 <th>Name</th>
@@ -26,7 +26,26 @@
             </tr>
         </thead>
         <tbody>
-      
+            <?php foreach ($publishers as $publisher): ?>
+                <tr>
+                    <td><?= esc($publisher['name']) ?></td>
+                    <td><?= esc($publisher['contact_email']) ?></td>
+                    <td><?= esc($publisher['contact_phone']) ?></td>
+                    <td>₹<?= esc($publisher['address']) ?></td>
+                    <td><?= esc($publisher['website']) ?></td>
+                    <td><?= ($publisher['is_active'] ?? 1) ? '<span style="color: #18bb18;">Active</span>' : '<span style="color:red;">Inactive</span>' ?></td>
+                    <td><?= date('d M Y', strtotime($publisher['created_at'])) ?></td>
+                    <td>
+                        <a href="<?= admin_url('book/add_books/' . $publisher['id']) ?>" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="<?= admin_url('book/delete/' . $publisher['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable();
+});
+</script>

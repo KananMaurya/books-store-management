@@ -6,14 +6,14 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
-class AdminAuth implements FilterInterface
+class CustomerAuth implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
         $session = session();
 
-        if (!$session->get('isLoggedIn') || $session->get('role') !== 'admin') {
-            return redirect()->to('/admin/login');
+        if (!$session->get('isLoggedIn') || $session->get('role') !== 'customer') {
+            return redirect()->to('/');
         }
     }
 

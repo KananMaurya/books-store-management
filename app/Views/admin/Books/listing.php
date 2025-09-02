@@ -12,7 +12,7 @@
         </div>
     </div>
     <hr>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="myTable">
         <thead>
             <tr>
                 <th>Name</th>
@@ -46,3 +46,8 @@
         </tbody>
     </table>
 </div>
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable();
+});
+</script>

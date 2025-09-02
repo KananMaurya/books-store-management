@@ -140,6 +140,10 @@
                 <option value="0" <?php if($is_active=='0'){echo "selected";}?>>InActive</option>
             </select>
         </div>
+         <div class="col-md-4">
+            <label class="form-label">Rating</label>
+            <input type="text" name="rating" class="form-control"  value="<?= esc($book['rating'] ?? '') ?>">
+        </div>
     <!--
         <div class="col-md-4">
             <label class="form-label">Dimensions</label>

@@ -12,7 +12,7 @@ class BooksModel extends Model
      protected $allowedFields = [
           'name', 'slug', 'description', 'writer', 'publisher', 'language', 'isbn',
           'format', 'tax_id', 'sell_price', 'cost_price', 'discount', 'coupone',
-          'stock_quantity', 'sku', 'barcode', 'image', 'video_url', 'weight', 'is_active','added_to', 'updated_at'
+          'stock_quantity', 'sku', 'barcode', 'image', 'video_url', 'weight', 'is_active','rating','added_to', 'updated_at'
         ];
 
 
