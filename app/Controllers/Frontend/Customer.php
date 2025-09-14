@@ -4,13 +4,16 @@ namespace App\Controllers\Frontend;
 use App\Controllers\BaseController; // <-- Add this line
 
 use App\Models\BooksModel;
+use App\Models\CategoriesModel;
 
 class Customer extends BaseController
 {   protected $booksModel;
+    protected $categoriesModel;
 
     public function __construct()
     {
         $this->booksModel     = new BooksModel(); 
+        $this->categoriesModel     = new CategoriesModel(); 
     }
     public function index()
     {
@@ -18,6 +21,7 @@ class Customer extends BaseController
 
         $data['title']   =  'Customer Dashboard';
         $data['books']   =   $this->booksModel->get_for_website();
+        $data['subcategories']   =   $this->categoriesModel->getSubCategories();
 
         $this->renderCustomer('customer/home', $data);
     }

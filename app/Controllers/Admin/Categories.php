@@ -16,34 +16,36 @@ class Categories extends BaseController
     }
     public function index(){
 
-        $data['title'] = 'Categories';
+        $data['title']     = 'Categories';
+        $data['listing']   = $this->categoriesModel->getSubCategories();
         return $this->renderAdmin('admin/categories/index', $data);
     }
 
-    public function save_categories($id=''){
-        if ($this->request->getMethod() == 'POST' && empty($id)) {
+    // public function save_categories($id=''){
+    //     if ($this->request->getMethod() == 'POST' && empty($id)) {
 
-            $postData = $this->request->getPost();         
-            $this->categoriesModel->addCategories($postData);
-            return redirect()->to(admin_url('categories'))->with('success', 'Categories added successfully!');
-        }
+    //         $postData = $this->request->getPost();         
+    //         $this->categoriesModel->addCategories($postData);
+    //         return redirect()->to(admin_url('categories'))->with('success', 'Categories added successfully!');
+    //     }
 
-       if ($this->request->getMethod() == 'POST' && !empty($id)) {
-           $updateData = $this->request->getPost();
-           $this->categoriesModel->updateCategories($id,$updateData);
-            return redirect()->to(admin_url('categories/save_categories/'.$id))->with('success', 'Categories Updated successfully.');
-       }
+    //    if ($this->request->getMethod() == 'POST' && !empty($id)) {
+    //        $updateData = $this->request->getPost();
+    //        $this->categoriesModel->updateCategories($id,$updateData);
+    //         return redirect()->to(admin_url('categories/save_categories/'.$id))->with('success', 'Categories Updated successfully.');
+    //    }
 
      
-        $data['publishers']   = $this->categoriesModel->get_categories();
-        $data['title']   = 'Add Categories';
-        return $this->renderAdmin('admin/categories/add_edit_categories',$data);
-    }
+    //     $data['publishers']   = $this->categoriesModel->get_categories();
+    //     $data['title']   = 'Add Categories';
+    //     return $this->renderAdmin('admin/categories/add_edit_categories',$data);
+    // }
 
 
     public function save_sub_categories($id=''){
 
         $data['title']   = 'Add Sub Categories';
+        $data['SubCategories']   = $this->categoriesModel->getSubCategories($id);
 
         if ($this->request->getMethod() == 'POST' && empty($id)) {
 
@@ -57,11 +59,23 @@ class Categories extends BaseController
            $this->categoriesModel->updateSubCategories($id,$updateData);
 
             $data['title']   = 'Edit Sub Categories';
+
             return redirect()->to(admin_url('categories/save_sub_categories/'.$id))->with('success', 'Categories Updated successfully.');
        }
-       $data['Categories']   = $this->categoriesModel->get_categories();
+      
        return $this->renderAdmin('admin/categories/add_edit_sub_categories',$data);
     }
 
+ public function delete($id){
+    if(!empty($id) && intval($id)){
+        if($this->categoriesModel->deleteSubCategories($id)){
+         return redirect()->to(admin_url('categories'))->with('success', 'Record delete successfully.');
+        }else{
+         return redirect()->to(admin_url('categories'))->with('warning', 'Record Not delete successfully.');
+        }        
+    }else{
+         return redirect()->to(admin_url('categories'))->with('danger', 'Record Not delete successfully.');
+        }
+ }
 
 }

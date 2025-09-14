@@ -159,17 +159,7 @@
             <label class="form-label">Delivery Info</label>
             <textarea name="delivery_info" class="form-control" rows="2"></textarea>
         </div>
-
-        <div class="col-md-6">
-            <label class="form-label">Category ID</label>
-            <input type="number" name="category_id" class="form-control">
-        </div>
-
-        <div class="col-md-6">
-            <label class="form-label">Sub-category ID</label>
-            <input type="number" name="sub_category_id" class="form-control">
-        </div>
-
+  
         <div class="col-md-6">
             <label class="form-label">Meta Title</label>
             <input type="text" name="meta_title" class="form-control">
@@ -184,6 +174,26 @@
             <label class="form-label">Meta Description</label>
             <textarea name="meta_description" class="form-control" rows="2"></textarea>
         </div> -->
+      <div class="col-md-4">
+        <?php  $category_list =  get_categories_list(); ?>
+            <label class="form-label">Category</label>
+            <select name="category_id" class="form-control" required>
+                <option value="">Select Category</option>
+            <?php foreach($category_list as $category){?>
+             <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+            <?php  } ?>
+        </select>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Sub-category</label>
+            <select name="sub_category_id" class="form-control" required>
+                <option value="">Select Sub Category</option>
+            <?php if(!empty($subcategorylist)){ foreach($subcategorylist as $subcategory){?>
+             <option value="<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name']; ?></option>
+            <?php  }  }?>
+        </select>
+        </div>
 
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Save</button>

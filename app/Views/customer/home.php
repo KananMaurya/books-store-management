@@ -1,3 +1,97 @@
+<?php 
+$categories = get_categories_list(); 
+if(!empty($categories)): ?>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCategories" aria-controls="navbarCategories" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navbarCategories">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <?php foreach($categories as $cat): ?>
+          <?php if($cat['status'] == '1'): ?>  
+            <?php 
+              $subs = [];
+              if(!empty($subcategories)) {
+                foreach($subcategories as $sub) {
+                  if($cat['id'] == $sub['categories_id'] && $sub['is_active'] == '1') {
+                    $subs[] = $sub;
+                  }
+                }
+              }
+              $has_sub = count($subs) > 0;
+            ?>
+
+            <li class="nav-item <?= $has_sub ? 'dropdown mx-3' : 'mx-3'; ?>">
+              <?php if($has_sub): ?>
+                <a class="nav-link dropdown-toggle" href="category.php?id=<?= $cat['id']; ?>" id="navbarDropdown<?= $cat['id']; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-<?= $cat['icon']; ?>"></i> <?= $cat['name']; ?>
+                </a>
+
+                <!-- Multi-column dropdown -->
+                <div class="dropdown-menu p-4" aria-labelledby="navbarDropdown<?= $cat['id']; ?>">
+                  <div class="row gx-4 gy-3"> <!-- gx = horizontal gap, gy = vertical gap -->
+                    <?php 
+                      $limit = 8; 
+                      $chunks = array_chunk($subs, $limit); 
+                      foreach($chunks as $chunk): ?>
+                        <div class="col-md-4">
+                          <ul class="list-unstyled mb-0">
+                            <?php foreach($chunk as $sub): ?>
+                              <li class="mb-2">
+                                <a class="dropdown-item" href="subcategory.php?id=<?= $sub['id']; ?>">
+                                  <?= $sub['sub_categories_name']; ?>
+                                </a>
+                              </li>
+                            <?php endforeach; ?>
+                          </ul>
+                        </div>
+                    <?php endforeach; ?>
+                  </div>
+                </div>
+
+              <?php else: ?>
+                <a class="nav-link" href="category.php?id=<?= $cat['id']; ?>">
+                  <i class="bi bi-<?= $cat['icon']; ?>"></i> <?= $cat['name']; ?>
+                </a>
+              <?php endif; ?>
+            </li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+</nav>
+<?php endif; ?>
+
+<style>
+/* Show dropdown menu on hover for desktop */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+/* Multi-column dropdown look */
+.dropdown-menu {
+    width: 780px; /* thoda wide */
+    border-radius: 10px;
+}
+
+.dropdown-menu .col-md-4 {
+    padding: 10px 20px; /* space between columns */
+}
+
+.dropdown-menu .dropdown-item {
+    padding: 8px 12px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #000;
+}
+</style>
+
 
 <div class="container py-5">
   <div class="row row-cols-1 row-cols-md-6 g-4">

@@ -44,6 +44,7 @@ $routes->group('admin', [
         $routes->match(['get', 'post'], 'categories/save_categories/(:segment)', 'Categories::save_categories/$1');
         $routes->match(['get', 'post'],'categories/save_sub_categories','Categories::save_sub_categories');    
         $routes->match(['get', 'post'], 'categories/save_sub_categories/(:segment)', 'Categories::save_sub_categories/$1');
+        $routes->get('categories/delete/(:segment)', 'Categories::delete/$1');
 
         $routes->get('publishers','Publishers::index');
         $routes->match(['get', 'post'],'publishers/save_publisher','Publishers::save_publisher');    

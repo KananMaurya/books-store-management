@@ -68,7 +68,7 @@ class Book extends BaseController
     }
     public function delete($id){
        $this->booksModel->deleteBook($id);
-       $data['books']   = $this->booksModel->get();
+       // $data['books']   = $this->booksModel->get();
        return redirect()->to(admin_url('book/listing'))->with('success', 'Record delete successfully.');
     }
 }
