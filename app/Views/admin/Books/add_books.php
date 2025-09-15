@@ -180,7 +180,7 @@
             <select name="category_id" class="form-control" required>
                 <option value="">Select Category</option>
             <?php foreach($category_list as $category){?>
-             <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+             <option <?php if(!empty($book['category_id']) && $book['category_id']==$category['id']){ echo "selected"; } ?> value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
             <?php  } ?>
         </select>
         </div>
@@ -189,8 +189,8 @@
             <label class="form-label">Sub-category</label>
             <select name="sub_category_id" class="form-control" required>
                 <option value="">Select Sub Category</option>
-            <?php if(!empty($subcategorylist)){ foreach($subcategorylist as $subcategory){?>
-             <option value="<?php echo $subcategory['id']; ?>"><?php echo $subcategory['name']; ?></option>
+            <?php if(!empty($subCategories)){ foreach($subCategories as $subcategory){?>
+             <option  <?php  if(!empty($book['sub_category_id']) && $book['sub_category_id']==$subcategory['id']){ echo "selected"; } ?> value="<?php echo $subcategory['id']; ?>"><?php echo $subcategory['sub_categories_name']; ?></option>
             <?php  }  }?>
         </select>
         </div>

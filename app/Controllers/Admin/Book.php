@@ -6,18 +6,21 @@ use App\Controllers\BaseController;
 use App\Models\BooksModel;
 use App\Models\WriterModel;
 use App\Models\PublisherModel;
+use App\Models\CategoriesModel;
 
 class Book extends BaseController
 {
     protected $booksModel;
     protected $writerModel;
     protected $publisherModel;
+    protected $categoriesModel;
 
     public function __construct()
     {
         $this->booksModel     = new BooksModel(); 
         $this->writerModel    = new WriterModel(); 
         $this->publisherModel = new PublisherModel();
+        $this->categoriesModel = new CategoriesModel();
     }
 
     public function add_books($id = '')
@@ -48,10 +51,12 @@ class Book extends BaseController
        }
 
      
-        $data['title']        = 'Add Book';
-        $data['writers']      = $this->writerModel->get_writer();
-        $data['publishers']   = $this->publisherModel->get_publisher();
-        $data['taxs']         = $this->booksModel->get_taxs();
+        $data['title']         = 'Add Book';
+        $data['writers']       = $this->writerModel->get_writer();
+        $data['publishers']    = $this->publisherModel->get_publisher();
+        $data['taxs']          = $this->booksModel->get_taxs();
+        $data['subCategories'] = $this->categoriesModel->getSubCategories();
+
         if (!empty($id)) {
           $data['book']   = $this->booksModel->get($id);
         }

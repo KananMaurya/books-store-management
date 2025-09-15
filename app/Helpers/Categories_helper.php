@@ -6,7 +6,7 @@ function get_categories_list()
         array('id'=>'1','name'=>'Children','status'=>1, 'icon'=>'emoji-smile'),
         array('id'=>'2','name'=>'Fiction','status'=>1, 'icon'=>'book-half'),
         array('id'=>'3','name'=>'Non-Fiction','status'=>1, 'icon'=>'journal-text'),
-        array('id'=>'4','name'=>'Science','status'=>1, 'icon'=>'beaker'),
+        array('id'=>'4','name'=>'Science','status'=>0, 'icon'=>'beaker'),
         array('id'=>'5','name'=>'Technology','status'=>1, 'icon'=>'cpu'),
         array('id'=>'6','name'=>'History','status'=>1, 'icon'=>'hourglass-split'),
         array('id'=>'7','name'=>'Biographies','status'=>1, 'icon'=>'person-badge'),

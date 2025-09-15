@@ -2,6 +2,10 @@
 <html>
 <head>
   <title><?= $title ?? 'Customer Shop' ?></title>
+
+   <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -24,6 +28,7 @@
   }
 </style>
  <link rel="stylesheet" href="<?= base_url('customer/style.css') ?>">
+ <script src="<?= base_url('assets/js/common.js') ?>"></script>
 
 </head>
 <body>
@@ -59,8 +64,15 @@
 
         <!-- Cart -->
         <li class="nav-item">
-          <a class="nav-link" href="<?= site_url('customer/cart') ?>"><i class="bi bi-cart"></i> Cart</a>
+          <a class="nav-link position-relative" href="<?= site_url('customer/cart') ?>">
+            <i class="bi bi-cart" style="font-size: 20px;"></i> Cart
+            <span id="total_cart" 
+                  class="position-absolute top-1 start-110 translate-middle badge rounded-pill text-danger bg-white">
+             <?php echo get_cart_count_by_ip(); ?>
+            </span>
+          </a>
         </li>
+
       </ul>
     </div>
   </div>

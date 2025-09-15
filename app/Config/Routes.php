@@ -16,6 +16,7 @@ $routes->group('customer', [
     $routes->get('/', 'Customer::index');               
     $routes->get('profile', 'Customer::profile');       
     $routes->get('book/get_book_detail/(:segment)', 'Book::get_books/$1'); 
+    $routes->post('addtocart/add/(:segment)', 'Addtocart::add/$1'); 
 });
 
 // ---------------- Admin Routes ----------------

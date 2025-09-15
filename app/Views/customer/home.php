@@ -1,4 +1,4 @@
-<?php 
+<?php  
 $categories = get_categories_list(); 
 if(!empty($categories)): ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -146,7 +146,7 @@ if(!empty($categories)): ?>
       </div>
       <div class="btn-group">
         <button class="btn btn-outline-secondary"><i class="bi bi-heart"></i></button>
-        <button class="btn btn-danger w-100 ms-2" onclick="add_to_cart(<?php echo $book['product_id']; ?>);">Add to Cart</button>
+        <button class="btn btn-danger w-100 ms-2 added_<?php echo $book['product_id']; ?>" onclick="add_to_cart(<?php echo $book['product_id']; ?>);">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -194,8 +194,9 @@ if(!empty($categories)): ?>
 }
 
 .image-container:hover .quick-view-overlay {
-  height: 55px; /* aapke requirement ke hisaab se */
+  height: 55px; 
 }
+
 
 </style>
 <script>
@@ -243,7 +244,7 @@ function show_pop(product_id) {
                   </div>
 
                   <!-- Buttons -->
-                  <button class="btn btn-danger mt-2" onclick="add_to_cart(${data.product_id}, document.getElementById('quantity_${data.product_id}').value);">Add to Cart</button>
+                  <button class="btn btn-danger mt-2 added_${data.product_id}" onclick="add_to_cart(${data.product_id});">Add to Cart</button>
                   <button class="btn btn-success mt-2" onclick="buy_now(${data.product_id}, document.getElementById('quantity_${data.product_id}').value);">Buy Now</button>
                   <button class="btn btn-primary mt-2" onclick="more_books();">More Books</button>
               </div>
@@ -258,5 +259,36 @@ function show_pop(product_id) {
             console.error("Error:", error);
         });
 }
+</script>
 
+<script>
+function add_to_cart(book_id){
+  if(book_id=='' || book_id==null){
+    return false;
+  }
+
+  $.ajax({
+    url: "<?php echo base_url('customer/addtocart/add/'); ?>" + book_id,
+    method: "post",
+    dataType: "json", 
+    success: function(response){
+    if(response.status === 1){
+        // Cart count update
+        $('#total_cart').html(response.count); 
+         set_alert('success','Book added to cart');
+        // Disable clicked button
+        $(".added_" + book_id)
+            .prop("disabled", true)
+            .removeClass("btn-danger")
+            .addClass("btn-success")
+            .text("Added");
+    } else {
+        alert("Failed to add book");
+    }
+},
+    error: function(e){
+      console.error("Ajax Error:", e);
+    }
+  });
+}
 </script>
