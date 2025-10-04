@@ -1,0 +1,50 @@
+[33mcommit 8075e4ea9ad114336e90fdd4633bed4954e743cd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: KananMaurya <karanmaurya16082@gmail.com>
+Date:   Tue Sep 2 21:42:51 2025 +0530
+
+    Added all modified and new files and apply validation for admin
+
+[1mdiff --git a/app/Models/CategoriesModel.php b/app/Models/CategoriesModel.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..49ccf4a[m
+[1m--- /dev/null[m
+[1m+++ b/app/Models/CategoriesModel.php[m
+[36m@@ -0,0 +1,38 @@[m
+[32m+[m[32m<?php[m
+[32m+[m
+[32m+[m[32mnamespace App\Models;[m
+[32m+[m
+[32m+[m[32muse CodeIgniter\Model;[m
+[32m+[m
+[32m+[m[32mclass CategoriesModel extends Model[m
+[32m+[m[32m{[m
+[32m+[m[32m    protected $table            = 'tblcategories';[m
+[32m+[m[32m    protected $primaryKey       = 'id';[m
+[32m+[m[32m    protected $allowedFields    = ['name','is_active'];[m
+[32m+[m
+[32m+[m[32m    protected $createdField  = 'created_at';[m
+[32m+[m[32m    protected $updatedField  = 'updated_at';[m
+[32m+[m
+[32m+[m[32m    public function addCategories(array $data)[m
+[32m+[m[32m    {[m
+[32m+[m
+[32m+[m[32m        return $this->insert($data);[m
+[32m+[m[32m     }[m
+[32m+[m
+[32m+[m[32m    public function updateCategories($id, array $data)[m
+[32m+[m[32m    {[m[41m      [m
+[32m+[m[32m        return $this->update($id, $data);[m[41m [m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public function deleteCategories($id)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        return $this->delete($id);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m     public function get_categories()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        return $this->findAll(); // Returns all writers[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[41m       [m
+[32m+[m[32m}[m

@@ -12,7 +12,7 @@ class BooksModel extends Model
      protected $allowedFields = [
           'name', 'slug', 'description', 'writer', 'publisher', 'language', 'isbn',
           'format', 'tax_id', 'sell_price', 'cost_price', 'discount', 'coupone',
-          'stock_quantity', 'sku', 'barcode', 'image', 'video_url', 'weight', 'is_active','rating','added_to', 'updated_at','category_id','sub_category_id','tags','meta_title','meta_description'
+          'stock_quantity', 'sku', 'barcode', 'image', 'video_url', 'weight', 'is_active','rating','added_to', 'updated_at','category_id','sub_category_id','tags','meta_title','meta_description','labels_id'
         ];
 
 
@@ -87,6 +87,10 @@ public function get_for_website($id = '')
     }
 
     return $builder->findAll();
+}
+public function getTotalCount()
+{
+    return $this->countAllResults();
 }
 
 

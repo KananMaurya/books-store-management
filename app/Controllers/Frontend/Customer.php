@@ -36,4 +36,33 @@ class Customer extends BaseController
 
         $this->renderCustomer('customer/profile', $data);
     }
+
+    public function signup(){
+        $data = [
+            'title' => 'Signup',
+        ];
+
+        $this->renderCustomer('customer/signup', $data);
+    }
+    public function login(){
+        $data = [
+            'title' => 'login',
+        ];
+
+        $this->renderCustomer('customer/login', $data);
+    }
+     public function forgot_password(){
+        $data = [
+            'title' => 'Forgot password',
+        ];
+
+        $this->renderCustomer('customer/forgot_password', $data);
+    }
+     public function TrackOrder(){
+        $data = [
+            'title' => 'Track Order',
+        ];
+
+        $this->renderCustomer('customer/track_order', $data);
+    }
 }

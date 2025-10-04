@@ -36,7 +36,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="<?= site_url('customer/dashboard') ?>">Books Store</a>
+    <a class="navbar-brand" href="<?= site_url() ?>">Books Store</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -54,7 +54,7 @@
             <li><a class="dropdown-item" href="<?= site_url('customer/signup') ?>"><i class="bi bi-person-plus"></i> Sign Up</a></li>
             <li><a class="dropdown-item" href="<?= site_url('customer/forgot-password') ?>"><i class="bi bi-key"></i> Forgot Password</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="<?= site_url('customer/orders/track') ?>"><i class="bi bi-truck"></i> Track Order</a></li>
+            <li><a class="dropdown-item" href="<?= site_url('order/track') ?>"><i class="bi bi-truck"></i> Track Order</a></li>
             <li><a class="dropdown-item" href="<?= site_url('customer/account/settings') ?>"><i class="bi bi-gear"></i> Account Settings</a></li>
             <li><a class="dropdown-item" href="<?= site_url('customer/account/address') ?>"><i class="bi bi-geo-alt"></i> Your Address</a></li>
             <li><hr class="dropdown-divider"></li>

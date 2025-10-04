@@ -5,7 +5,7 @@
           <div class="card shadow-sm border-0">
             <div class="card-body text-center">
               <i class="fa-solid fa-book fa-2x text-primary mb-2"></i>
-              <h5 class="card-title">120 Books</h5>
+              <h5 class="card-title"><?php if(!empty($totalbooks)){ echo $totalbooks;} ?></h5>
               <p class="text-muted">Total Books</p>
             </div>
           </div>

@@ -124,7 +124,14 @@ if(!empty($categories)): ?>
       
     <div class="col">
   <div class="card book-card position-relative">
-    <span class="badge bg-info text-dark badge-custom">POPULAR</span>
+    <?php  $books_labels =  get_book_labels(); 
+foreach($books_labels as $labels) {
+      if($labels['id']==$book['labels_id']){ 
+    echo '<span class="badge bg-'.$labels['bg'].' text-light badge-custom">'. $labels['name'].'</span>';
+     }  
+}
+
+    ?>
 
     <div class="image-container position-relative">
       <img src="<?php echo base_url('uploads/' . $book['image']); ?>" class="card-img-top" alt="Book">

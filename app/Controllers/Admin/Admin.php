@@ -3,9 +3,15 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
+use App\Models\BooksModel;
 
 class Admin extends BaseController {
-
+    protected $booksModel;
+    public function __construct()
+    {
+        $this->booksModel     = new BooksModel(); 
+    }
+ 
     public function login()
     {
         // if ($this->session->get('isLoggedIn') && $this->session->get('role') === 'admin') {
@@ -55,6 +61,7 @@ class Admin extends BaseController {
             'title'    => 'Admin Dashboard',
             'username' => $this->session->get('username'),
         ];
+         $data['totalbooks'] = $this->booksModel->getTotalCount();
 
         return $this->renderAdmin('admin/dashboard', $data);
     }

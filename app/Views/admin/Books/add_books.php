@@ -177,7 +177,7 @@
       <div class="col-md-4">
         <?php  $category_list =  get_categories_list(); ?>
             <label class="form-label">Category</label>
-            <select name="category_id" class="form-control" required>
+            <select name="category_id" class="form-control" >
                 <option value="">Select Category</option>
             <?php foreach($category_list as $category){?>
              <option <?php if(!empty($book['category_id']) && $book['category_id']==$category['id']){ echo "selected"; } ?> value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
@@ -187,11 +187,22 @@
 
         <div class="col-md-6">
             <label class="form-label">Sub-category</label>
-            <select name="sub_category_id" class="form-control" required>
+            <select name="sub_category_id" class="form-control" >
                 <option value="">Select Sub Category</option>
             <?php if(!empty($subCategories)){ foreach($subCategories as $subcategory){?>
              <option  <?php  if(!empty($book['sub_category_id']) && $book['sub_category_id']==$subcategory['id']){ echo "selected"; } ?> value="<?php echo $subcategory['id']; ?>"><?php echo $subcategory['sub_categories_name']; ?></option>
             <?php  }  }?>
+        </select>
+        </div>
+
+        <div class="col-md-6">
+             <?php  $book_labels =  get_book_labels(); ?>
+            <label class="form-label">Books labels</label>
+            <select name="labels_id" class="form-control" required>
+                <option value="">Select Category</option>
+            <?php foreach($book_labels as $labels){?>
+             <option <?php if(!empty($book['labels_id']) && $book['labels_id']==$labels['id']){ echo "selected"; } ?> value="<?php echo $labels['id']; ?>"><?php echo $labels['name']; ?></option>
+            <?php  } ?>
         </select>
         </div>
 
